@@ -1,5 +1,7 @@
-package com.project100pi.cricbuzztask.model
+package com.project.cricbuzztask.model
 
+import android.os.Parcel
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
 /**

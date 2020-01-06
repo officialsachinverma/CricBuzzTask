@@ -1,4 +1,4 @@
-package com.project100pi.cricbuzztask.model
+package com.project.cricbuzztask.model
 
 import com.google.gson.annotations.SerializedName
 

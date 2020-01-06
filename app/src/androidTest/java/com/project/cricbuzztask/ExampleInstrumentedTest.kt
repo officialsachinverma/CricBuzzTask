@@ -1,4 +1,4 @@
-package com.project100pi.cricbuzztask
+package com.project.cricbuzztask
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

@@ -1,7 +1,7 @@
-package com.project100pi.cricbuzztask.network
+package com.project.cricbuzztask.network
 
+import com.project.cricbuzztask.utils.Constants
 import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -14,14 +14,16 @@ object APIClient {
     private var retrofit: Retrofit? = null
 
     init {
-        val interceptor = HttpLoggingInterceptor()
-        interceptor.level = HttpLoggingInterceptor.Level.BODY
-        val client = OkHttpClient.Builder().addInterceptor(interceptor).build()
+        val interceptor = RetrofitInterceptor()
+
+        val okHttpClient = OkHttpClient.Builder()
+            .addInterceptor(interceptor)
+            .build()
 
         retrofit = Retrofit.Builder()
-            .baseUrl("https://newsapi.org/v2")
+            .baseUrl(Constants.apiBaseUrl)
+            .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
-            .client(client)
             .build()
     }
 

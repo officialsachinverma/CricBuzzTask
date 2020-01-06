@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">CricBuzzTask</string>
     <string name="no_data_to_show">No Data To Show</string>
+    <string name="description">Description</string>
+    <string name="headline">HeadLine</string>
+    <string name="author">Author</string>
 </resources>

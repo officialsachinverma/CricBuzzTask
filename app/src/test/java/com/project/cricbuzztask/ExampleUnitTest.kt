@@ -1,4 +1,4 @@
-package com.project100pi.cricbuzztask
+package com.project.cricbuzztask
 
 import org.junit.Test
 
