@@ -1,6 +1,8 @@
 package com.project.cricbuzztask.ui.activities
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -46,8 +48,6 @@ class NewsListActivity : AppCompatActivity(), onClick {
         initAdapter()
 
         observeForObservable()
-
-        setDataToAdapter(newsListViewModel.newsList.value!!)
     }
 
     private fun observeForObservable() {
@@ -78,6 +78,23 @@ class NewsListActivity : AppCompatActivity(), onClick {
 
     override fun onItemClicked(position: Int) {
         NewsDetails.start(this, newsList[position].url, newsList[position].urlToImage)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        R.id.sort_by_title -> {
+            setDataToAdapter(newsList.sortedWith(compareBy { it.title }))
+            true
+        }
+        R.id.sort_by_date -> {
+            setDataToAdapter(newsList.sortedWith(compareBy { it.publishedAt }))
+            true
+        }
+        else -> false
     }
 
     fun showWaitingSign() {
