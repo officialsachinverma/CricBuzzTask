@@ -50,6 +50,14 @@ class NewsListActivity : AppCompatActivity(), onClick {
         observeForObservable()
     }
 
+    private fun initAdapter() {
+        adapter = NewsListAdapter(R.layout.row_news_item, this)
+        val linearLayout = LinearLayoutManager(this)
+        linearLayout.orientation = LinearLayoutManager.VERTICAL
+        rvVideoList.layoutManager = linearLayout
+        rvVideoList.adapter = adapter
+    }
+
     private fun observeForObservable() {
         newsListViewModel.newsList.observe(this, Observer {
             hideWaitingSign()
@@ -66,14 +74,6 @@ class NewsListActivity : AppCompatActivity(), onClick {
 
     private fun setDataToAdapter(list: List<News>) {
         adapter.submitList(list)
-    }
-
-    private fun initAdapter() {
-        adapter = NewsListAdapter(R.layout.row_news_item, this)
-        val linearLayout = LinearLayoutManager(this)
-        linearLayout.orientation = LinearLayoutManager.VERTICAL
-        rvVideoList.layoutManager = linearLayout
-        rvVideoList.adapter = adapter
     }
 
     override fun onItemClicked(position: Int) {
